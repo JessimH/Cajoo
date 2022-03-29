@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         marginRight: 5,
     },
     inputHidden: {
-        display: 'none'
+        opacity: 0,
     },
     textInput: {
         width: '20%',
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         marginTop: height * .25,
     },
     falseInput: {
-        width: width / 5,
+        width: width / 8,
         marginTop: 30,
         height: 55,
         backgroundColor: '#ebebeb',

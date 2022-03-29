@@ -13,15 +13,11 @@ import {
 import HeaderTitle from '../../components/headerTitle'
 
 import { validatePhone } from './phone.helper'
+import { Auth } from 'aws-amplify';
 
 import styles from './phone.styles'
 
 class Phone extends React.Component {
-
-    openConfirm = () => {
-        this.props.navigation.navigate('confirm')
-    }
-
     constructor(props) {
         super(props)
         this.state = {
@@ -41,6 +37,24 @@ class Phone extends React.Component {
             canGo
         })
     }
+
+    openConfirm = async () => {
+        try {
+            const { user } = await Auth.signUp({
+                username: '+33' + this.state.phone,
+                password: 'azerty'
+            });
+            console.log('utilisateur créé:', user);
+        } catch (error) {
+            console.log('error signing up:', error);
+        }
+
+        this.props.navigation.navigate('confirm', {
+            phone: this.state.phone,
+        })
+
+    }
+
 
 
     render() {
